@@ -32,11 +32,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':core')
 
     implementation(DI.hiltAndroid)
     kapt(DI.hiltAndroidCompiler)
 
-    implementation (Retrofit2.retrofit)
+    api (Retrofit2.retrofit)
     implementation (Retrofit2.converterGson)
     implementation (Retrofit2.gson)
     implementation (Retrofit2.converterScalars)

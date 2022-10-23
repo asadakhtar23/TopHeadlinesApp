@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -34,11 +35,21 @@ android {
         viewBinding true
         dataBinding true
     }
+
+    configurations {
+        all {
+            exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel-ktx'
+        }
+    }
+
 }
 
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(path: ':core')
+    implementation project(path: ':data')
 
     implementation (AndroidSdk.appcompat)
     implementation (AndroidSdk.material)
@@ -48,6 +59,9 @@ dependencies {
     implementation (AndroidSdk.fragmentKtx)
 
     implementation (Kotlin.coroutinesCore)
+
+    implementation(DI.hiltAndroid)
+    kapt(DI.hiltAndroidCompiler)
 
     testImplementation (TestLib.junit)
     androidTestImplementation (TestLib.extJunit)

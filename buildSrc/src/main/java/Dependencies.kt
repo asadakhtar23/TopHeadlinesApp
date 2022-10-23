@@ -3,13 +3,13 @@ object Versions {
     const val versionCode = 1
     const val versionName = "1.0"
 
-    const val kotlin = "1.5.30"
+    const val kotlin = "1.6.0"
     const val kotlinCoroutines = "1.5.0-native-mt"
     const val material = "1.3.0"
     const val appcompat = "1.2.0"
     const val constraintLayout = "2.0.4"
 
-    const val gradlePlugin = "4.2.2"
+    const val gradlePlugin = "7.1.0"
 
     const val junit = "4.+"
     const val extJunit = "1.1.3"
@@ -38,7 +38,7 @@ object App {
 
 object AndroidSdk {
     const val min = 21
-    const val compile = 31
+    const val compile = 32
     const val target = compile
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     const val material = "com.google.android.material:material:${Versions.material}"
