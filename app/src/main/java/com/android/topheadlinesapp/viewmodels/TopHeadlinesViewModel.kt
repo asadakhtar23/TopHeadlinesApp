@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TopHeadlinesViewModel @Inject constructor(private val topStoriesRepository: TopHeadlinesRepository): ViewModel() {
+class TopHeadlinesViewModel @Inject constructor(private val topHeadlinesRepository: TopHeadlinesRepository): ViewModel() {
 
     private val _responseTopHeadlines: MutableLiveData<List<Article>> = MutableLiveData()
 
@@ -26,10 +26,10 @@ class TopHeadlinesViewModel @Inject constructor(private val topStoriesRepository
 
     var isDataInitialized = false
 
-    fun getTopHeadlines(source: String) {
+    fun getTopHeadlines(apiKey: String, source: String) {
         showProgressDialog.value = true
         viewModelScope.launch {
-            topStoriesRepository.getTopHeadlinesBySource("a4a687d78daf4759a6aef3803e0cec6a", source).collectLatest { topHeadlines ->
+            topHeadlinesRepository.getTopHeadlinesBySource(apiKey, source).collectLatest { topHeadlines ->
                 handleTopHeadlinesStates(topHeadlines)
             }
         }

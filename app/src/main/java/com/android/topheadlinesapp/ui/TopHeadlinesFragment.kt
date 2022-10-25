@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.android.topheadlinesapp.externals.AppNativeData
+import com.android.topheadlinesapp.BuildConfig
 import com.android.topheadlinesapp.R
 import com.android.topheadlinesapp.adapters.TopHeadlinesAdapter
 import com.android.topheadlinesapp.databinding.FragmentTopHeadlinesBinding
@@ -37,7 +39,7 @@ class TopHeadlinesFragment : Fragment(), ItemClickListener {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         if(!viewModel.isDataInitialized)
-            viewModel.getTopHeadlines("bbc-news")
+            viewModel.getTopHeadlines(AppNativeData.getApiKey(), BuildConfig.SOURCE)
     }
 
     private fun observeViewModel() {

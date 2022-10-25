@@ -19,5 +19,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/navigation" />
 
+        <View
+            android:id="@+id/topLayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@color/white"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

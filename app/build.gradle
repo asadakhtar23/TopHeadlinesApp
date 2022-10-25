@@ -25,17 +25,40 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     buildFeatures {
         viewBinding true
         dataBinding true
     }
+
+    productFlavors {
+        flavorDimensions "TopHeadlines"
+        BBCNews{
+            buildConfigField "String", "SOURCE", "\"bbc-news\""
+            buildConfigField "String", "PROVIDER", "\"BBC News\""
+        }
+        ABCNews{
+            buildConfigField "String", "SOURCE", "\"abc-news\""
+            buildConfigField "String", "PROVIDER", "\"ABC News\""
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path 'src/main/cpp/CMakeLists.txt'
+        }
+    }
+
+    ndkVersion = Versions.ndkVersion
 
 }
 
@@ -52,6 +75,7 @@ dependencies {
     implementation (AndroidSdk.lifecycleViewModel)
     implementation (AndroidSdk.activityKtx)
     implementation (AndroidSdk.fragmentKtx)
+    implementation (AndroidSdk.biometric)
     implementation (Navigation.navigationFragment)
     implementation (Navigation.navigationUI)
 

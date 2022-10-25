@@ -1,5 +1,6 @@
 package com.tha.network.di
 
+import com.tha.core.Constants.BASE_URL
 import com.tha.network.topHeadlines.TopHeadlinesApi
 import dagger.Module
 import dagger.Provides
@@ -48,7 +49,4 @@ class NetworkModule {
     fun provideNetworkApi(retrofit: Retrofit): TopHeadlinesApi =
         retrofit.create(TopHeadlinesApi::class.java)
 
-    companion object {
-        private const val BASE_URL = "https://newsapi.org/"
-    }
 }

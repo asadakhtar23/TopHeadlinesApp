@@ -33,6 +33,10 @@ object Versions {
     const val okhttp = "4.0.0"
 
     const val glide = "4.10.0"
+
+    const val ndkVersion = "23.0.7599858"
+
+    const val biometric = "1.1.0"
 }
 
 object App {
@@ -51,6 +55,7 @@ object AndroidSdk {
     const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtx}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
+    const val biometric = "androidx.biometric:biometric:${Versions.biometric}"
 }
 
 object Navigation {
