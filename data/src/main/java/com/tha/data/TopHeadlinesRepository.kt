@@ -2,7 +2,7 @@ package com.tha.data
 
 import com.tha.core.models.NetworkResult
 import com.tha.core.models.topHeadlines.TopHeadlinesResponse
-import com.tha.network.BaseApiResponse
+import com.tha.core.models.BaseApiResponse
 import com.tha.network.topHeadlines.TopHeadlinesNetwork
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

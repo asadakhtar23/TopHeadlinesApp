@@ -1,6 +1,5 @@
-package com.tha.network
+package com.tha.core.models
 
-import com.tha.core.models.NetworkResult
 import retrofit2.Response
 
 abstract class BaseApiResponse {

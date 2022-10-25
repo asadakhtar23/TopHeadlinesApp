@@ -20,6 +20,8 @@ object Versions {
     const val activityKtx = "1.3.0"
     const val fragmentKtx = "1.3.0"
 
+    const val navVersion = "2.5.1"
+
     const val hiltAndroid = "2.40"
 
     const val gson = "2.8.2"
@@ -29,6 +31,8 @@ object Versions {
     const val converterScalars = "2.9.0"
     const val loggingInterceptor = "4.9.1"
     const val okhttp = "4.0.0"
+
+    const val glide = "4.10.0"
 }
 
 object App {
@@ -49,9 +53,19 @@ object AndroidSdk {
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
 }
 
+object Navigation {
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}"
+    const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navVersion}"
+    const val navigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navVersion}"
+}
+
 object Kotlin {
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+}
+
+object ImageLoader {
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 }
 
 object Retrofit2 {
