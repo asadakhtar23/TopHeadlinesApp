@@ -2,7 +2,7 @@
 
 ## Description
 
-Simple app to show the top headlines for a specific news source (BBC news or ABC News) and read the
+Simple app to show the top headlines for a specific news source (BBC News or ABC News) and read the
 details of the headlines. App also have the fingerprint scanner functionality, If the device has a 
 fingerprint scanner and it’s configured in the device, user should be required to use it when he 
 opens the application and project also have two news source targets flavor (BBCNews and ABCNews)
