@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
+import androidx.biometric.BiometricManager
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        if (viewModel.checkBiometricAvailability(this)) {
+        if (viewModel.checkBiometricAvailability(BiometricManager.from(this))) {
             binding.topLayer.visibility = View.VISIBLE
             viewModel.initBiometricPrompt(this, ContextCompat.getMainExecutor(this))
         } else {

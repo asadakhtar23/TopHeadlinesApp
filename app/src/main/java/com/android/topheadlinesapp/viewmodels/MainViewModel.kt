@@ -1,6 +1,5 @@
 package com.android.topheadlinesapp.viewmodels
 
-import android.content.Context
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.FragmentActivity
@@ -20,8 +19,15 @@ class MainViewModel: ViewModel() {
 
     val biometricResult: LiveData<BiometricResult> = _biometricResult
 
-    fun checkBiometricAvailability(context: Context): Boolean {
-        val biometricManager = BiometricManager.from(context)
+    /**
+     * check biometric sensor availability and it is configured in the device
+     *
+     * @param biometricManager BiometricManager of the biometric sensor
+     *
+     * @return Boolean - return true if the biometric sensor available and configured
+     * otherwise return false
+     */
+    fun checkBiometricAvailability(biometricManager: BiometricManager): Boolean {
         when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)) {
             BiometricManager.BIOMETRIC_SUCCESS -> {
                 return true
@@ -30,6 +36,14 @@ class MainViewModel: ViewModel() {
         return false
     }
 
+    /**
+     * init biometric prompt and get biometric prompt info to show biometric
+     * authentication dialog to authenticate user
+     *
+     * @param fragmentActivity FragmentActivity
+     * @param executor Executor
+     *
+     */
     fun initBiometricPrompt(fragmentActivity: FragmentActivity, executor: Executor) {
 
         biometricPrompt = BiometricPrompt(fragmentActivity, executor,
@@ -57,6 +71,13 @@ class MainViewModel: ViewModel() {
 
     }
 
+    /**
+     * set biometric prompt info and return that prompt info to show
+     * those details on the prompt dialog
+     *
+     * @return BiometricPrompt.PromptInfo - information to show on the prompt dialog
+     *
+     */
     private fun getBiometricPromptInfo(): BiometricPrompt.PromptInfo {
         return BiometricPrompt.PromptInfo.Builder()
             .setTitle("App Authentication")

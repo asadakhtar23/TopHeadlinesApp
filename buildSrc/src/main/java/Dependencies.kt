@@ -37,6 +37,11 @@ object Versions {
     const val ndkVersion = "23.0.7599858"
 
     const val biometric = "1.1.0"
+
+    const val mockkVersion = "1.12.3"
+    const val testCore = "1.4.0"
+    const val coreTesting = "2.1.0"
+    const val coroutineTest = "1.6.4"
 }
 
 object App {
@@ -93,4 +98,13 @@ object TestLib {
     const val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val junitRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+    const val mockkAgentJVM = "io.mockk:mockk-agent-jvm:${Versions.mockkVersion}"
+    const val mockk = "io.mockk:mockk:${Versions.mockkVersion}"
+
+    const val testCore = "androidx.test:core:${Versions.testCore}"
+    const val testRunner = "androidx.test:runner:${Versions.testCore}"
+    const val testRules = "androidx.test:rules:${Versions.testCore}"
+    const val coreTesting = "androidx.arch.core:core-testing:${Versions.coreTesting}"
+    const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutineTest}"
 }

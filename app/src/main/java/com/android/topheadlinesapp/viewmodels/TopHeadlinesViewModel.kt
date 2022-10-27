@@ -26,6 +26,14 @@ class TopHeadlinesViewModel @Inject constructor(private val topHeadlinesReposito
 
     var isDataInitialized = false
 
+    /**
+     * Get top headlines of the targeted source and handle states accordingly
+     *
+     * @param apiKey Api Key of the NewsAPI
+     * @param source targeted news source (i.e bbc-news, abc-news..)
+     *
+     *
+     */
     fun getTopHeadlines(apiKey: String, source: String) {
         showProgressDialog.value = true
         viewModelScope.launch {
@@ -36,11 +44,21 @@ class TopHeadlinesViewModel @Inject constructor(private val topHeadlinesReposito
 
     }
 
-    fun handleTopHeadlinesStates(topHeadlines: NetworkResult<TopHeadlinesResponse>) {
+    /**
+     * Handle state according to top headlines response and sort list of articles
+     * according to published date and set that list on live data for there observers
+     * if the response is success and set error message on live data if the response is error.
+     *
+     *
+     * @param topHeadlines Network response of top headlines
+     *
+     */
+    private fun handleTopHeadlinesStates(topHeadlines: NetworkResult<TopHeadlinesResponse>) {
         when (topHeadlines) {
             is NetworkResult.Success -> {
                 showProgressDialog.postValue(false)
-                _responseTopHeadlines.postValue(topHeadlines.data?.articles)
+                val sortedArticles = topHeadlinesRepository.sortArticlesByDate(topHeadlines.data?.articles!!)
+                _responseTopHeadlines.postValue(sortedArticles)
                 isDataInitialized = true
             }
             is NetworkResult.Error -> {

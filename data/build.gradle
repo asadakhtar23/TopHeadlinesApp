@@ -45,6 +45,13 @@ dependencies {
 
     implementation (Kotlin.coroutinesCore)
 
+    testImplementation (TestLib.mockkAgentJVM)
+    testImplementation (TestLib.mockk)
+
+    androidTestImplementation (TestLib.testCore)
+    androidTestImplementation (TestLib.testRunner)
+    androidTestImplementation (TestLib.testRules)
+
     testImplementation (TestLib.junit)
     androidTestImplementation (TestLib.extJunit)
     androidTestImplementation (TestLib.espresso)
