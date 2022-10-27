@@ -19,6 +19,8 @@ class MainViewModel: ViewModel() {
 
     val biometricResult: LiveData<BiometricResult> = _biometricResult
 
+    var isBiometricScanned = false
+
     /**
      * check biometric sensor availability and it is configured in the device
      *
@@ -53,12 +55,14 @@ class MainViewModel: ViewModel() {
                     super.onAuthenticationError(errorCode, errString)
                     _biometricResult.value = BiometricResult.AUTH_ERROR
                     showErrorMessage.value = "Authentication error: $errString"
+                    isBiometricScanned = true
                 }
 
                 override fun onAuthenticationSucceeded(
                     result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
                     _biometricResult.value = BiometricResult.SUCCESS
+                    isBiometricScanned = true
                 }
 
                 override fun onAuthenticationFailed() {

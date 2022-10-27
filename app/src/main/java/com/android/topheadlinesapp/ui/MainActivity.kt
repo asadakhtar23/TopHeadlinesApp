@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = BuildConfig.PROVIDER
         observeViewModel()
-        initView()
+        if(!viewModel.isBiometricScanned)
+            initView()
     }
 
     private fun observeViewModel() {
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.showErrorMessage.observe(this) { message ->
-            showSnackBar(binding.root, message)
+            showSnackBar(binding.root, "$message (Application is Closing in 2 Seconds)")
         }
     }
 
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 binding.topLayer.visibility = View.VISIBLE
 
                 lifecycleScope.launch {
-                    delay(1500)
+                    delay(3500)
                     finish()
                 }
             }
