@@ -43,10 +43,15 @@ class TopHeadlinesRepository @Inject constructor(private val topHeadlinesNetwork
     fun sortArticlesByDate(articles: List<Article>): List<Article> {
         Collections.sort(articles, Comparator { firstArticle, secondArticle ->
 
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+            try {
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
 
-            return@Comparator dateFormat.parse(secondArticle.publishedAt)
-                ?.compareTo(dateFormat.parse(firstArticle.publishedAt)) ?: -1
+                return@Comparator dateFormat.parse(secondArticle.publishedAt)
+                    ?.compareTo(dateFormat.parse(firstArticle.publishedAt)) ?: -1
+            } catch (ex: Exception) {
+                return@Comparator -1
+            }
+            
         })
         return articles
     }
